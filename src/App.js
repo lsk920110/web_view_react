@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import './AddToaster.js'
+import addToaster from './AddToaster.js';
+
 
 function App() {
+  const [text1,setText1] = useState('');
+  const [text2, setText2] = useState('');
+  
+
+  useEffect(() => {
+    window.fromFlutter = () => {
+      alert('from flutter to web');
+    }
+  })
+  
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Hello flutter<br></br>
+      <input type="text" value={text1} onChange={(e) => {
+        setText1(e.target.value);
+      }} />
+      <button onClick={
+        () => {
+          addToaster();
+        }
+      }>type1</button>
+      <div></div>
+      <input type="text" value={text2} onChange={(e) => {setText2(e.target.value) }} />
+      <button>type1</button>
     </div>
   );
 }
